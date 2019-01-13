@@ -118,20 +118,6 @@ class MoveCalendarTest extends TestCase {
 
 	/**
 	 * @expectedException InvalidArgumentException
-	 * @expectedExceptionMessage User can't be system
-	 */
-	public function testTryToMoveToOrFromSystem()
-	{
-		$commandTester = new CommandTester($this->command);
-		$commandTester->execute([
-			'name' => $this->command->getName(),
-			'userorigin' => 'system',
-			'userdestination' => 'user2',
-		]);
-	}
-
-	/**
-	 * @expectedException InvalidArgumentException
 	 * @expectedExceptionMessage User <user> has no calendar named <personal>. You can run occ dav:list-calendars to list calendars URIs for this user.
 	 */
 	public function testMoveWithInexistantCalendar()

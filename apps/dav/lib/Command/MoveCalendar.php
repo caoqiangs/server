@@ -108,14 +108,9 @@ class MoveCalendar extends Command {
 
 		$this->io = new SymfonyStyle($input, $output);
 
-		if (in_array('system', [$userOrigin, $userDestination], true)) {
-			throw new \InvalidArgumentException("User can't be system");
-		}
-
 		if (!$this->userManager->userExists($userOrigin)) {
 			throw new \InvalidArgumentException("User <$userOrigin> is unknown.");
 		}
-
 
 		if (!$this->userManager->userExists($userDestination)) {
 			throw new \InvalidArgumentException("User <$userDestination> is unknown.");
