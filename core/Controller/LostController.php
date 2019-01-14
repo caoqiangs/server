@@ -236,10 +236,8 @@ class LostController extends Controller {
 		// FIXME: use HTTP error codes
 		try {
 			$this->sendEmail($user);
-		} catch (\Exception $e){
-			$response = new JSONResponse($this->error($e->getMessage()));
-			$response->throttle();
-			return $response;
+		} catch (\Exception $e) {
+			// Ignore the error since we do not want to leak this info
 		}
 
 		$response = new JSONResponse($this->success());
